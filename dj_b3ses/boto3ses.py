@@ -10,6 +10,10 @@ client = boto3.client('ses')
 class SESEmailBackend(BaseEmailBackend):
 
     def send_messages(self, email_messages):
+        """
+        Sends the messages.
+        """
+
         if not email_messages:
             return
         num_sent = 0
@@ -24,6 +28,7 @@ class SESEmailBackend(BaseEmailBackend):
         Private message to send out an email message instance
         via boto3 SES
         """
+
         try:
             client.send_email(
                 Source=email_message.from_email,
